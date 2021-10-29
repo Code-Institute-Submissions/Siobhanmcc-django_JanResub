@@ -1,3 +1,9 @@
+.card {
+   position:absolute;
+}
+
+
+
 html {
     height: 100%;
 }
