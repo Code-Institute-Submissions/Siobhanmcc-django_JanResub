@@ -12,7 +12,7 @@ def index(request):
     print(new_list)
 
     context = {
-        'new_list': products,
+        'new_list': new_list,
     }
 
-    return render(request, 'home/index.html')
+    return render(request, 'home/index.html', context)
