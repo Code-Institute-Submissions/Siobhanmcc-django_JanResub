@@ -180,6 +180,20 @@ input[name='q']::placeholder {
     overflow-y: auto;
 }
 
+.img-fluid {
+    position: relative; 
+    top: -10px;
+}
+
+.title-img {
+    width:800px;
+    height:200px;
+}
+
+.heading {
+    color:white;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
