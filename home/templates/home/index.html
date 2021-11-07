@@ -12,7 +12,30 @@
 {% endblock %}
 
 {% block content %}
+<section class= "homepage-imgs">
+  <div class="container-fluid title-container">
+    <div class="row">
+      <div class="col-md-6 title-img" id="energy-drinks">
+<img src="/media/herbalife-image.png" class="img-fluid" alt="Energy Products">
+<a class="btn btn-primary text-uppercase" href="{% url 'products' %}?category=energy_products">Energy Products</a>
+</div>
+<div class="col-md-6 title-img" id="nutrition-products-drinks">
+  <img src="/media/herbalife-nutrition.jpeg" class="img-fluid" alt="Nutrition Products">
+  <a class="btn btn-primary text-uppercase" href="{% url 'products' %}?category=nutrition_products">Nutrition Products</a>
+  </div>
 
+
+</div>
+</div> </section>
+
+
+
+
+
+  <!--Shop Our Products-->
+<div class= "col-5 pb-5">
+  <h3 class="heading">Shop Our Bestselling Products</h3>
+</div>
 
 <!--Bestselling products-->
 

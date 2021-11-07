@@ -2,7 +2,9 @@
    position:absolute;
 }
 
-
+.container-fluid {
+    position: abosulte;
+}
 
 html {
     height: 100%;
@@ -184,14 +186,18 @@ input[name='q']::placeholder {
     position: relative; 
     top: -10px;
 }
+.title-img img {
+    max-width:100%;
+    height:auto;
+}
 
-.title-img {
-    width:800px;
-    height:200px;
+h3 {
+    font-size: 1.75rem;
 }
 
 .heading {
     color:white;
+    padding-top:50px;
 }
 
 /* -------------------------------- Media Queries */
@@ -202,6 +208,23 @@ input[name='q']::placeholder {
     max-width: 80%;
   }
 }
+
+.title-img img {
+display:block;
+width:100%;
+object-fit:cover;
+height:200px;
+}
+
+.title-container .btn {
+    position:absolute;
+    top:50%;
+    left:50%;
+    background-color:#000;
+    color:white;
+    border:black;
+}
+
 
 /* Allauth form formatting */
 
@@ -296,10 +319,7 @@ input[name='q']::placeholder {
         z-index: 1030;
     }
 
-    .header-container {
-        padding-top: 164px;
-    }
-}
+
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
