@@ -77,9 +77,9 @@ I used Font Awesome icons for throughout this project.
 ### Typography
 The following fonts were used :
 
-Helvetica Neue"
-Helvetica 
-sans-serif
+- Helvetica Neue
+- Helvetica 
+- sans-serif
 
 Wireframes
 Mock-ups were created early on in this project.
@@ -143,5 +143,68 @@ A user who is logged out will see options to register or log in to the website.
 The shopping cart icon can lead to cart page. Once the user has added at least one item to their cart the $ value of the cart will appear under the shopping cart icon.
 
 The search bar enables the user to type in their relevent product search.
+
+## Technologies Used
+- [Gitpod](https://www.gitpod.io/) - The online IDE used for developing this project.
+- [GitHub](https://github.com/) - Used to store and share all project code remotely.
+- [Balsamiq](https://balsamiq.com/) - To create the wireframes for this project.
+
+## Front-End Technologies
+
+- [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5) - Used as the base for markup text.
+- [CSS3] (https://developer.mozilla.org/en-US/docs/Web/CSS) - Used to add styles to the HTML.
+- [jQuery 3.4.1](https://releases.jquery.com/jquery/) - Used as the primary JavaScript functionality.
+- [Stripe] (https://stripe.com/gb) - Used to make secure payments.
+- [AWS S3 Bucket](https://aws.amazon.com/) - Used to store images entered into the database.
+- [Font Awesome](https://fontawesome.com/) - Used for icons in the website.
+- [Bootstrap4](https://getbootstrap.com/) - Used to align the elements in the website using the grid system. And also used to create the hamburger button, the modals, the buttons, the badges, the alerts and to style the forms.
+
+## Back-End Technologies
+
+[Python 3.2.0](https://www.python.org/) - Used as the back-end programming language.
+[Django](https://docs.djangoproject.com/en/3.2/) - Used as my Python web framework.
+[Heroku](https://dashboard.heroku.com/) - for deployment
+[PostgreSQL](https://www.postgresql.org/) - Used as relational SQL database plugin via Heroku.
+
+
+## Testing
+### Automated Testing
+
+### Validation Services
+HTML: I have used https://validator.w3.org/ in order to validate the HTML code.
+
+CSS: I have used https://jigsaw.w3.org/css-validator/ in order to validate the CSS code.
+
+JavaScript: I have used https://jshint.com/ in order to check the JavaScript code.
+
+### Manual Testing
+I have a detailed checklist of all the manual testing that has been done to confirm all areas of the site work as expected.
+
+Click here to see the checklist that I have used to test the main features.
+
+### Stripe payment testing
+My checkout app is using the stripe payment for the payment option. I tested this by using Stripes test card (4242 4242 4242 4242) I tested the forms and ensured all my validation worked as expected and my logic was performing as expected. The checkout app works from the Stripe API.
+
+Card number - 4242424242424242
+
+CVC - Any 3 digit number.
+
+Expiry date - Any date in the future.
+
+### Responsiveness
+Chrome DevTools and physical devices were used throughout development for a number of purposes, one of which was to test the responsiveness and rendering across a range of sizes and devices. As issues were found they were either fixed at the time or noted and returned to later.
+
+The site has been tested successfully on
+
+Apple Macbook Air - Safari browser
+
+Apple iPhone 6,7 &8S - Safari Browser
+
+iPad Mini - Safari Browser
+
+Desktop - Chrome v.74
+
+Desktop - Firefox v.67
+
 
 
