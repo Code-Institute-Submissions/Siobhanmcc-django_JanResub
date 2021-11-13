@@ -180,7 +180,7 @@ JavaScript: I have used https://jshint.com/ in order to check the JavaScript cod
 ### Manual Testing
 I have a detailed checklist of all the manual testing that has been done to confirm all areas of the site work as expected.
 
-Click here to see the checklist that I have used to test the main features.
+Click [here](https://github.com/Siobhanmcc/django/blob/master/documents/Testing_file.pdf) to see the checklist that I have used to test the main features.
 
 ### Stripe payment testing
 My checkout app is using the stripe payment for the payment option. I tested this by using Stripes test card (4242 4242 4242 4242) I tested the forms and ensured all my validation worked as expected and my logic was performing as expected. The checkout app works from the Stripe API.
