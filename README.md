@@ -109,7 +109,7 @@ Displays all the products available in the website. Users can see the product im
 
 On this page the user can see all the details about the product. The product title, Price and the product features. If the user want to add the product to the cart they can do from here as well.
 
-## Checkout App
+### Checkout App
 ### checkout.html
 
 Each checkout page features an order summary, which lists all the items in the users cart, title, price and quantity.
@@ -120,12 +120,12 @@ Once the payment is successfull, a message will be displayed.
 
 If there is an error with the payment, the user will be notified with an error message.
 
-## Search App
+### Search App
 This will allow the user to search for a product based on the title.
 
 The search icon is visible from all the pages. 
 
-## Base Template
+### Base Template
 Features available from all the pages
 
 Navbar
@@ -242,7 +242,7 @@ To allow you to access all functionality on the site locally, create free accoun
 
 Instructions
 
-Clone this GitHub repository by either clicking the green "Clone or download" button above in order to download the project as a zip-file (remember to unzip it first), or by entering the following command into the Git CLI terminal: git clone https://github.com/stephyraju/ticktockwatches
+Clone this GitHub repository by either clicking the green "Clone or download" button above in order to download the project as a zip-file (remember to unzip it first), or by entering the following command into the Git CLI terminal: git clone https://github.com/Siobhanmcc/django
 
 Open your preferred IDE, open a terminal session in the unzip folder or cd to the correct location.
 
@@ -257,23 +257,12 @@ pip -r requirements.txt.
 
 Set up the following environment variables within your IDE.
 
-  - SECRET_KEY
+  - STRIPE_WH_SECRET
 
-  - C2_HOSTNAME
+  - STRIPE_SECRET_KEY
 
-  - EMAIL_ADDRESS
+  - STRIPE_PUBLIC_KEY
 
-  - EMAIL_PASSWORD
-
-  - STRIPE_PUBLISHABLE
-
-  - STRIPE_SECRET
-
-  - DATABASE_URL
-
-  - AWS_ACCESS_KEY_ID
-
-  - AWS_SECRET_ACCESS_KEY
 In the IDE terminal, use the following command to launch the Django project: python manage.py runserver.
 
 The Django server should be running locally now on http://127.0.0.1:8000 (or similar). If it doesn't automatically open, you can copy/paste it into your browser of choice.
@@ -292,8 +281,9 @@ python manage.py runserver
 Note - If you are having issues viewing static files you may need to collect static with the below command.
 
 python3 manage.py collectstatic
-Heroku Deployment
-To deploy TickTock  to heroku, take the following steps:
+
+### Heroku Deployment
+To deploy FitnessPro  to heroku, take the following steps:
 Create a requirements.txt file using the terminal command pip freeze > requirements.txt.
 
 Create a Procfile with the terminal command echo web: python app.py > Procfile.
@@ -312,16 +302,19 @@ Set the following config vars:
 
 Key	Value
 SECRET_KEY	<your_secret_key>
-STRIPE_PUBLISHABLE	<your_stripe_publishable>
-STRIPE_SECRET	<your_stripe_secret>
+STRIPE_PUBLIC_KEY	<your_stripe_public_key>
+STRIPE_SECRET_KEY	<your_stripe_secret_key>
+STRIPE_WH_SECRET <your_stripe_wh_secret>
 AWS_ACCESS_KEY_ID	<your_secret_key>
 AWS_SECRET_ACCESS_KEY	<your_secret_key>
-AWS_STORAGE_BUCKET_NAME	<your_AWS_S3_bucket_name>
 DATABASE_URL	<your_postgres_database url>
-EMAIL_ADDRESS	<your_email_address>
-EMAIL_PASSWORD	<your_password>
-C2_HOSTNAME	<your_heroku_app_hostname>
-In the Heroku dashboard, click "Deploy".
+EMAIL_HOST_USER	<your_email_address>
+EMAIL_HOST_PASS	<your_password>
+USE_AWS <True>
+DEVELOPMENT <False>
+
+In the Heroku dashboard, click "Deploy"
+
 
 In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch".
 
