@@ -81,12 +81,12 @@ The following fonts were used :
 - Helvetica 
 - sans-serif
 
-Wireframes
+### Wireframes
 Mock-ups were created early on in this project.
 
 I've used Balsamiq Wireframes during the Scope Plane part of the design and planning process for this project.
 
-All of my wireframes for this project can be found here
+All of my wireframes for this project can be found [here](https://github.com/Siobhanmcc/django/tree/master/documents/wireframes)
 
 ## Features
 ### Accounts App
