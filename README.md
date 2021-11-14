@@ -300,18 +300,19 @@ In the heroku dashboard for the application, click on settings tab and then clic
 
 Set the following config vars:
 
-Key	Value
-SECRET_KEY	<your_secret_key>
-STRIPE_PUBLIC_KEY	<your_stripe_public_key>
-STRIPE_SECRET_KEY	<your_stripe_secret_key>
-STRIPE_WH_SECRET <your_stripe_wh_secret>
-AWS_ACCESS_KEY_ID	<your_secret_key>
-AWS_SECRET_ACCESS_KEY	<your_secret_key>
-DATABASE_URL	<your_postgres_database url>
-EMAIL_HOST_USER	<your_email_address>
-EMAIL_HOST_PASS	<your_password>
-USE_AWS <True>
-DEVELOPMENT <False>
+| Key |	Value |
+|-----|-------|
+|SECRET_KEY	|<your_secret_key>|
+|STRIPE_PUBLIC_KEY |	<your_stripe_public_key> |
+|STRIPE_SECRET_KEY |	<your_stripe_secret_key> |
+|STRIPE_WH_SECRET | <your_stripe_wh_secret> |
+| AWS_ACCESS_KEY_ID	| <your_secret_key> |
+| AWS_SECRET_ACCESS_KEY	| <your_secret_key> |
+| DATABASE_URL |	<your_postgres_database url> |
+| EMAIL_HOST_USER	| <your_email_address> |
+| EMAIL_HOST_PASS	| <your_password> |
+| USE_AWS | <True> |
+| DEVELOPMENT | <False> |
 
 In the Heroku dashboard, click "Deploy"
 
@@ -319,3 +320,17 @@ In the Heroku dashboard, click "Deploy"
 In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch".
 
 The site is now successfully deployed.
+
+
+## Credits
+
+### Content
+
+The Project- Boutique Ado module in the Code Institute Full Stack Diploma in Software Development Program formed the basis for this project. 
+
+This site [Tick Tock watches](https://ticktockwatches.herokuapp.com/) also provided me with some ideas.
+
+## Acknowledgement
+The tutors, mentors and support staff at Code Institute
+
+Special thanks to Guido Cecilio Garcia, my Code Institute mentor, for his guidance and advice whilst working on this project.
