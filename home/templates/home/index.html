@@ -34,7 +34,7 @@
 
   <!--Shop Our Products-->
 <div class= "col-5 pb-5">
-  <h3 class="heading">Shop Our Bestselling Products</h3>
+  <h3 class="heading"><span>Shop Our Bestselling Products</span></h3>
 </div>
 
 <!--Bestselling products-->
@@ -42,7 +42,7 @@
 <div class="container">
   <div class="row">
     {% for product in products %}
-    <div class="col-3">
+    <div class="col-4">
       <div class="card" >
 
         <a href="{% url 'product_detail' product.id %}">
