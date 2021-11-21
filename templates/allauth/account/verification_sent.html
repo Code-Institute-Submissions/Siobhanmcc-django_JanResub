@@ -4,6 +4,15 @@
 
 {% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
 
+{% block extra_css %}
+<style>
+    body { 
+        background-image: none !important;
+        background-color: white !important;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
     <h1 class="verify">{% trans "Verify Your E-mail Address" %}</h1>
 
