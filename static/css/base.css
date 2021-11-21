@@ -1,4 +1,7 @@
-
+.row {
+      width: 100vw;
+      margin: auto
+}
 .card-title {
     margin-bottom: .75rem;
     white-space: nowrap;
