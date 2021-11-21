@@ -1,6 +1,5 @@
 .row {
-      width: 100vw;
-      margin: auto
+    justify-content: space-evenly;
 }
 .card-title {
     margin-bottom: .75rem;
@@ -219,6 +218,10 @@ input[name='q']::placeholder {
     height:auto;
 }
 
+.title-img {
+    padding: 0px !important;
+}
+
 h3 {
     font-size: 1.75rem;
 }
@@ -335,6 +338,7 @@ height:200px;
     border-color: #dc3545;
     border-radius: 0;
 }
+
 
 
 /* fixed top navbar only on medium and up */
