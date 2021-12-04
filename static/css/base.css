@@ -29,10 +29,6 @@ h3 {
     text-align:center;
 }
 
-.container-fluid {
-    position: absolute;
-}
-
 html {
     height: 100%;
 }
@@ -229,6 +225,7 @@ h3 {
 .heading {
     color:white;
     padding-top:50px;
+    display:inline-flex;
 }
 
 /* -------------------------------- Media Queries */

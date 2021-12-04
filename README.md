@@ -67,7 +67,7 @@ In an effort to keep the JavaScript minimal, I have decided to use jQuery as fou
 Django is a free and open-source web framework that I've used to render the back-end Python with the front-end Bootstrap. 
 
 ### Color Scheme
-For the color scheme, I've used grey and black in the navbar and most pages. I chose green for some icons to highlight. Overall, I tried to keep a simple classic look.
+For the color scheme, I've used davy's grey #555555 and black #000000 in the navbar and most pages. I chose green #198754 and blue #2596be for some icons to highlight. Overall, I tried to keep a simple classic look.
 
 ### Icons
 [Font Awesome 5.15](https://fontawesome.com/)
@@ -155,7 +155,6 @@ The search bar enables the user to type in their relevent product search.
 - [CSS3] (https://developer.mozilla.org/en-US/docs/Web/CSS) - Used to add styles to the HTML.
 - [jQuery 3.4.1](https://releases.jquery.com/jquery/) - Used as the primary JavaScript functionality.
 - [Stripe] (https://stripe.com/gb) - Used to make secure payments.
-- [AWS S3 Bucket](https://aws.amazon.com/) - Used to store images entered into the database.
 - [Font Awesome](https://fontawesome.com/) - Used for icons in the website.
 - [Bootstrap4](https://getbootstrap.com/) - Used to align the elements in the website using the grid system. And also used to create the hamburger button, the modals, the buttons, the badges, the alerts and to style the forms.
 
@@ -165,10 +164,10 @@ The search bar enables the user to type in their relevent product search.
 [Django](https://docs.djangoproject.com/en/3.2/) - Used as my Python web framework.
 [Heroku](https://dashboard.heroku.com/) - for deployment
 [PostgreSQL](https://www.postgresql.org/) - Used as relational SQL database plugin via Heroku.
+[AWS S3 Bucket](https://aws.amazon.com/) - Used to store images entered into the database.
 
 
 ## Testing
-### Automated Testing
 
 ### Validation Services
 HTML: I have used https://validator.w3.org/ in order to validate the HTML code.
@@ -203,9 +202,9 @@ Apple iPhone 6,7 &8S - Safari Browser
 iPad Mini - Safari Browser
 
 Desktop - Chrome v.74
-
 Desktop - Firefox v.67
 
+### Development
 ### GitHub Repository
 Created a repository in GitHub called: “Siobhanmcc/django” https://github.com/Siobhanmcc/django
 
