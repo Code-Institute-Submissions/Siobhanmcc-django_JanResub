@@ -1,4 +1,14 @@
-{% extends "base.html" %} {% load static %} {% block content%}
+{% extends "base.html" %} {% load static %}
+{% block extra_css %}
+<style>
+    body { 
+        background-image: none !important;
+        background-color: white !important;
+    }
+</style>
+{% endblock %}
+
+{% block content%}
 
 <!-- 500 Error handler -->
 <div class="container section-top">
