@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<style>
+    body { 
+        background-image: none !important;
+        background-color: white !important;
+    }
+</style>
+{% endblock %}
+
 {% block content%}
 <!-- 404 Error handler, in case a site visitor enters an incorrect URL-->
 <div class="container section-top">
