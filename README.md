@@ -4,7 +4,7 @@ This is the last milestone project for the Fullstack Web Developer course with C
 
 Throughout this project I have used Python, a high-end programming language along with Django, a python framework.
 
-The deployed site can be found at [here](https://ms-4.herokuapp.com/)
+The deployed site can be found [here](https://ms-4.herokuapp.com/)
 
 ## Table Of Contents
 
@@ -21,7 +21,6 @@ The deployed site can be found at [here](https://ms-4.herokuapp.com/)
 2. Features
 
 - Existing Features
-- Features Left to Implement
 
 3. Technologies Used
 
@@ -160,11 +159,11 @@ The search bar enables the user to type in their relevent product search.
 
 ## Back-End Technologies
 
-[Python 3.2.0](https://www.python.org/) - Used as the back-end programming language.
-[Django](https://docs.djangoproject.com/en/3.2/) - Used as my Python web framework.
-[Heroku](https://dashboard.heroku.com/) - for deployment
-[PostgreSQL](https://www.postgresql.org/) - Used as relational SQL database plugin via Heroku.
-[AWS S3 Bucket](https://aws.amazon.com/) - Used to store images entered into the database.
+- [Python 3.2.0](https://www.python.org/) - Used as the back-end programming language.
+- [Django](https://docs.djangoproject.com/en/3.2/) - Used as my Python web framework.
+- [Heroku](https://dashboard.heroku.com/) - for deployment
+- [PostgreSQL](https://www.postgresql.org/) - Used as relational SQL database plugin via Heroku.
+- [AWS S3 Bucket](https://aws.amazon.com/) - Used to store images entered into the database.
 
 
 ## Testing
@@ -311,7 +310,6 @@ Set the following config vars:
 | EMAIL_HOST_USER	| <your_email_address> |
 | EMAIL_HOST_PASS	| <your_password> |
 | USE_AWS | <True> |
-| DEVELOPMENT | <False> |
 
 In the Heroku dashboard, click "Deploy"
 
