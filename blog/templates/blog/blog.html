@@ -10,7 +10,7 @@
 </style>
 {% endblock %}
 
-{% block extra_title %}| Blog{% endblock %}
+{% block extra_title %}| <div class="col text-center mt-3"></div><h3 class="heading"><span class="blog-title">Blog</span></h3></div>{% endblock %}
 
 {% block content %}
     <div class="container-fluid">
@@ -28,7 +28,7 @@
                         <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-lg-4 text-center mb-3 card-group d-flex flex-column">
                             <div class="card">
                                 <a href="">
-                                    <img src="{{ post.image.url }}" class="card-img-top rounded" alt="{{ post.title }}">
+                                    <img src="{{ MEDIA_URL }}{{ post.image }}" class="card-img-top rounded" alt="{{ post.title }}">
                                 </a>
                                 <div class="card-body px-0">
                                     <div class="card-text-group">
@@ -38,7 +38,7 @@
                                         <p class="card-text font-weight-bold mb-0">{{ post.title }}</p>
                                         <p class="card-text small">{{ post.content|truncatechars:150 }}</p>
                                     </div>
-                                    <a class="btn my-btn mt-2" href="">
+                                    <a class="btn btn-primary blog-button" href="{% url 'blog_detail' post.slug %}">
                                         Read More...
                                     </a>
                                 </div>
