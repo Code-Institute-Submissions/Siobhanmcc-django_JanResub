@@ -39,8 +39,9 @@
                             <a href="{% url 'edit_blog_post' blog_post.slug %}" class="btn btn-primary blog-button mb-3 btn-info font-weight-bold">
                                 <i class="far fa-edit"></i> Edit Post
                             </a>
-                           
-                 
+                        
+                        <!-- Delete button & modal -->
+                        {% include 'blog/includes/delete_modal.html' %}
                         {% endif %}
                     </div>
                 </div>
