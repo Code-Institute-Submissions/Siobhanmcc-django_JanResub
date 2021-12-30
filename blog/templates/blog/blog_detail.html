@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    body { 
+        background-image: none !important;
+        background-color: white !important;
+    }
+</style>
+{% endblock %}
+
+{% block extra_title %}| {{ blog_post.title }}{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <!-- page header -->
+        <div class="row">
+            <div class="col-12">
+                <h1 class="page-title">{{ blog_post.title }}</h1>
+            </div>
+        </div>
+        <!-- page content -->
+        <div class="row">
+            <div class="col-12 col-sm-10 offset-sm-1 px-sm-0 col-lg-8 offset-lg-2 blog-content">
+                <img class="rounded blog-image" src="{{ blog_post.image.url }}" alt="{{ blog_post.title }}">
+                <p class="text-muted">{{ blog_post.date_posted }}</p>
+                <!-- https://docs.djangoproject.com/en/dev/ref/templates/builtins/#linebreaksbr -->
+                <p class="blog-post-content mb-2">{{ blog_post.content|linebreaksbr }}</p>
+                <p>
+                    <strong>Article by {{ blog_post.author }}</strong>
+                </p>
+                <div class="row">
+                    <div class="col d-flex flex-wrap justify-content-between">
+                        <a class="btn my-btn mb-3" href="{% url 'blog' %}">
+                            <i class="fas fa-angle-left"></i> Back to Blog's
+                        </a>
+                        {% if request.user.is_superuser %}
+                            <a href="{% url 'edit_blog_post' blog_post.slug %}" class="btn mb-3 btn-info font-weight-bold">
+                                <i class="far fa-edit"></i> Edit Post
+                            </a>
+                           
+                 
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
