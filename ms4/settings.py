@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'True'
 
-ALLOWED_HOSTS =  ['ms-4.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['ms-4.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'blog',
+    'contact',
+    
     # Other
     'crispy_forms',
     'storages',
