@@ -7,8 +7,7 @@ STATUS = (
 )
 
 class Contact(models.Model):
-    first_name = models.CharField(max_length=200, unique=True)
-    second_name = models.CharField(max_length=200, unique=True)
+    full_name = models.CharField(max_length=200, unique=True)
     email = models.CharField(max_length=200, unique=True)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)

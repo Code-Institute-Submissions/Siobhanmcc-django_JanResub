@@ -8,6 +8,7 @@ from .forms import ContactForm
 
 
 
+
 def contact(request):
     """
     A view to return contact page and render the form, allowing a user
@@ -31,18 +32,9 @@ def contact(request):
                 return redirect('contact_thankyou')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
+    
     else:
-        # Attempt to prefill full_name and email fields for logged in user, if they have
-        # this information saved in the profile
-        if request.user.is_authenticated:
-            profile = Profile.objects.get(user=request.user)
-            user_email = profile.user.email
-            contact_form = ContactForm(initial={
-                'full_name': profile.profile_full_name,
-                'email': user_email,
-                })
-        else:
-            contact_form = ContactForm()
+        contact_form = ContactForm()
 
     context = {
         'contact_form': contact_form,
@@ -54,6 +46,6 @@ def contact(request):
 def contact_thankyou(request):
     """
     A view to return contact_thankyou page in order \
-        to inform user that the message was succseddfully sent
+        to inform user that the message was successfully sent
     """
     return render(request, 'contact/contact_thankyou.html')
