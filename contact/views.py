@@ -28,18 +28,6 @@ def contact(request):
                 content=message
             )
             contact.save()
-            try:
-                send_mail(
-                    # to capture the user email it's displayd in subject field and can be responded to
-                    f"Message from {full_name}, <{user_email}>", 
-                    message,
-                    user_email,
-                    [settings.DEFAULT_FROM_EMAIL],
-                    fail_silently=False
-                )
-                return redirect('contact_thankyou')
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
     
     else:
         contact_form = ContactForm()
