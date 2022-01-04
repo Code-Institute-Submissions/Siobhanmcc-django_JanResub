@@ -28,6 +28,7 @@ def contact(request):
                 content=message
             )
             contact.save()
+            return redirect('contact_thankyou')
     
     else:
         contact_form = ContactForm()
