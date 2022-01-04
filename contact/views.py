@@ -5,6 +5,7 @@ from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings
 from django.http import HttpResponse
 from .forms import ContactForm
+from .models import Contact
 
 
 
@@ -20,6 +21,13 @@ def contact(request):
             full_name = contact_form.cleaned_data['full_name']
             user_email = contact_form.cleaned_data['email']
             message = contact_form.cleaned_data['message']
+
+            contact = Contact(
+                full_name=full_name,
+                email=user_email,
+                content=message
+            )
+            contact.save()
             try:
                 send_mail(
                     # to capture the user email it's displayd in subject field and can be responded to
