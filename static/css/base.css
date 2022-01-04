@@ -38,6 +38,13 @@ body {
     height: calc(100vh - 164px);
     color: #555;
     font-family: 'Lato';
+    overflow-x: hidden;
+    position: relative;
+}
+
+html {
+
+    overflow-x:hidden;
 }
 
 /* from Bulma */
