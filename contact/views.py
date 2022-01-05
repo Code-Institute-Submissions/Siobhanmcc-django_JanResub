@@ -8,8 +8,6 @@ from .forms import ContactForm
 from .models import Contact
 
 
-
-
 def contact(request):
     """
     A view to return contact page and render the form, allowing a user

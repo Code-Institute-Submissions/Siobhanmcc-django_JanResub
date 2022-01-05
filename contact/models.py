@@ -2,9 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 STATUS = (
-(0,"Unread"),
-(1,"Read")
+          (0, "Unread"),
+          (1, "Read")
 )
+
 
 class Contact(models.Model):
     full_name = models.CharField(max_length=200, unique=False)
