@@ -35,7 +35,7 @@ html {
 body {
     background: url('/media/sports-nutrition-grey.png') no-repeat center center fixed;
     background-size: cover;
-    height: calc(100vh - 164px);
+    height: 100%;
     color: #555;
     font-family: 'Lato';
     overflow-x: hidden;
