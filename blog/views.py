@@ -6,6 +6,7 @@ from django.utils.text import slugify
 from .models import BlogPost
 from .forms import BlogPostForm
 
+
 def blog_posts(request):
     """ A view to return the main blog """
     posts = BlogPost.objects.all()
@@ -15,13 +16,16 @@ def blog_posts(request):
 
     return render(request, 'blog/blog.html', context)
 
+
 def blog_detail(request, slug):
     """ A view that returns individual blog posts """
     blog_post = get_object_or_404(BlogPost, slug=slug)
     context = {
         'blog_post': blog_post,
     }
+    
     return render(request, 'blog/blog_detail.html', context)
+
 
 @login_required
 def add_blog_post(request):
@@ -52,6 +56,7 @@ def add_blog_post(request):
     }
 
     return render(request, 'blog/add_post.html', context)
+
 
 @login_required
 def edit_blog_post(request, slug):
