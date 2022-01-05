@@ -363,7 +363,7 @@ height:200px;
     }
 
     body {
-        height: calc(100vh - 116px);
+        height:100%;
     }
 
     .display-4.logo-font.text-black {
