@@ -8,35 +8,34 @@ The deployed site can be found [here](https://ms-4.herokuapp.com/)
 
 ## Table Of Contents
 
-1. UX
+1. [UX](#ux)
 
 - [User Stories](#user-stories)
-- Design
-- Framework
-- Color Scheme
-- Icons
-- Typography
-- Wireframes
+- [Design](#design)
+- [Framework](#framework)
+- [Colour Scheme](#colour-scheme)
+- [Icons](#icons)
+- [Typography](#typography)
+- [Wireframes](#wireframes)
 
-2. Features
+2. [Features](#features)
 
-- Existing Features
+- [Existing Features](#existing-features)
 
-3. Technologies Used
+3. [Technologies Used](#technologies-used)
 
-- Front-End Technologies
-- Back-End Technologies
+- [Front-End Technologies](#front-end-technologies)
+- [Back-End Technologies](#back-end-technologies)
 
-4. Testing
+4. [Testing](#testing)
 
-5. Github Repository
+5. [Github Repository](#github-repository)
 
-6. Deployment
+6. [Deployment](#deployment)
 
-- Local Deployment
-- Heroku Deployment
+- [Heroku Deployment](#heroku-deployment)
 
-7. Credits
+7. [Credits](#credits)
 
 ## UX
 This project is the final part of my Code Institute Full Stack Software Development program, specifically the Full Stack Frameworks module. The purpose of the project is to create a website for an online nutrition products e-commerce store where the company displays their products for customers. This website is designed in a simple and efficient way for the customers to have a seamless and enjoyable shopping experience.
@@ -65,8 +64,8 @@ In an effort to keep the JavaScript minimal, I have decided to use jQuery as fou
 - [Django 3.23](https://docs.djangoproject.com/en/3.2/releases/)
 Django is a free and open-source web framework that I've used to render the back-end Python with the front-end Bootstrap. 
 
-### Color Scheme
-For the color scheme, I've used davy's grey #555555 and black #000000 in the navbar and most pages. I chose green #198754 and blue #2596be for some icons to highlight. Overall, I tried to keep a simple classic look.
+### Colour Scheme
+For the colour scheme, I've used davy's grey #555555 and black #000000 in the navbar and most pages. I chose green #198754 and blue #2596be for some icons to highlight. Overall, I tried to keep a simple classic look.
 
 ### Icons
 [Font Awesome 5.15](https://fontawesome.com/)
@@ -175,6 +174,8 @@ CSS: I have used https://jigsaw.w3.org/css-validator/ in order to validate the C
 
 JavaScript: I have used https://jshint.com/ in order to check the JavaScript code.
 
+Python: I have used http://pep8online.com/ to validate Python code. 
+
 ### Manual Testing
 I have a detailed checklist of all the manual testing that has been done to confirm all areas of the site work as expected.
 
@@ -203,120 +204,60 @@ iPad Mini - Safari Browser
 Desktop - Chrome v.74
 Desktop - Firefox v.67
 
-### Development
-### GitHub Repository
-Created a repository in GitHub called: “Siobhanmcc/django” https://github.com/Siobhanmcc/django
+## Deployment
+### Heroku deployment
+This project is hosted by Heroku but is still deployed from the master branch of a GitHub repository. The following steps were taken to deploy this project to Heroku:
 
-Initialised git from the terminal using Git Bash:
+1. Went to Heroku and logged in.
+2. Created a new app by clicking create new app from the drop down menu labelled "new".
+3. Gave my app a name and selected the region from the dropdown menu that was closest geographically.
+4. Clicked the create app button where I was directed to the dashboard for the new app.
+5. Clicked on the resources tab on the dashboard. Added Heroku Postgres to the app by searching and then selecting it. I then selected the Hobby Dev – Free plan.
+6. As I didn't use fixtures to populate my development database I now created three json files, which act as fixtures and will help transfer the data across to the Postgres database.
+- python3 manage.py dumpdata products.Category > categories.json
+- python3 manage.py dumpdata products.Product > products.json
+7. Installed dj_database_url and psycopg2-binary using pip3 install.
+8. In settings.py I imported dj_database_url at the top of the file.
+9. Then replaced the default DATABASE setting with:
+`DATABASES = {
+        'default': dj_database_url.parse(<DATABASE_URL>)
+    }`
+The <DATABASE_URL> is found in the Heroku apps Config Vars. It's important that you don't commit this url into version control!
 
-git init
+10. I ran migrations using python3 manage.py migrate to create the models in the new database.
+11. I now used the json files created in step 6 to populate the new database. 
+- python3 manage.py loaddata categories.json
+- python3 manage.py loaddata products.json
+11. Then I created a new superuser, this was done by using python3 manage.py createsuperuser and then following the instructions shown in the terminal.
+12. Installed gunicorn using pip3 install.
+13. Used pip3 freeze > requirements.txt, this stores all our apps requirements.
+14. Created a Procfile and populated it with:
+`web: gunicorn <app_name>.wsgi:application`
+15. I logged into Heroku but this time via the terminal using heroku login -i.
+16. Then I used heroku config:set COLLECTSTATIC=1 --app <app_name> to disable static files from being collected. This is only a temporary measure.
+17. Added the hostname of the Heroku app to ALLOWED_HOSTS in settings.py
+`ALLOWED_HOSTS = ['<hostname>', 'localhost']`
+18. Returned to the Heroku dashboard, clicked on the deploy tab, scrolled down to the “Deployment method” section and clicked the connect to GitHub button.
+19. I searched for my repository in the “Connect to GitHub” section, found it and clicked connect.
+I then enabled Automatic Deploys.
+20. At the top of the dashboard I selected the settings tab. Scrolled down to the Config Vars section and populated the section with the key value pairs of the following:
+- AWS_ACCESS_KEY_ID - I get this when I set up AWS.
+- AWS_SECRET_ACCESS_KEY - I get this when I set up AWS.
+- DATABASE_URL - Prepopulated.
+- SECRET_KEY
+- STRIPE_PUBLIC_KEY
+- STRIPE_SECRET_KEY
+- STRIPE_WH_SECRET
+- USE_AWS - True
+- EMAIL_HOST_USER
+- EMAIL_HOST_PASS
+21. I changed the default DATABASE setting we created in step 9 in settings.py so that it now retrieves the value from Heroku:
+`DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }`
+22. Added, committed and pushed all files via the terminal.
+23. Heroku is now set up and the app visible. It will automatically update whenever commits are pushed to Github via the IDE.
 
-Created a .gitignore file and I have added the files and folders that won't need to push to GitHub (i.e. *.sqlite3, *.pyc, _pycache_)
-
-Added the files that I was working on to the Staging area by using:
-
-git add .
-
-Run the commit command with the first commit
-
-git commit -m “initial commit"
-
-Copied from GitHub the following path and I ran it in the Git Bash terminal in order to indicate where my remote repository is:
-git remote add origin git@github.com:Siobhanmcc/django.git
-
-git push -u origin master
-
-I've run regular commits after every important update to the code, and I pushed the changes to GitHub.
-
-Deployment
-How to run this project locally
-To run this project on your own IDE follow the instructions below:
-
-Ensure you have the following tools: - An IDE such as Microsoft Visual Studio Code(or any IDE)
-
-In order to run this project locally on your own system, you will need the following installed - PIP - Python 3 - Git
-
-To allow you to access all functionality on the site locally, create free accounts with the following services: - Stripe - AWS and set up an S3 bucket
-
-Instructions
-
-Clone this GitHub repository by either clicking the green "Clone or download" button above in order to download the project as a zip-file (remember to unzip it first), or by entering the following command into the Git CLI terminal: git clone https://github.com/Siobhanmcc/django
-
-Open your preferred IDE, open a terminal session in the unzip folder or cd to the correct location.
-
-Create a .env file with your own credentials.
-
-python -m .venv venv NOTE: The python part of this command and the ones in other steps below assumes you are working with a windows operating system. Your Python command may differ, such as python3 or py
-
-Activate the .venv with the command: .venv\Scripts\activate Again this command may differ depending on your operating system, please check the Python Documentation on virtual environments for further instructions.
-
-Install all required modules with the command
-pip -r requirements.txt.
-
-Set up the following environment variables within your IDE.
-
-  - STRIPE_WH_SECRET
-
-  - STRIPE_SECRET_KEY
-
-  - STRIPE_PUBLIC_KEY
-
-In the IDE terminal, use the following command to launch the Django project: python manage.py runserver.
-
-The Django server should be running locally now on http://127.0.0.1:8000 (or similar). If it doesn't automatically open, you can copy/paste it into your browser of choice.
-
-When you run the Django server for the first time, it should create a new SQLite3 database file: db.sqlite3.
-
-Next, you'll need to make migrations to create the database schema: * python manage.py makemigrations * python manage.py migrate
-
-Create your superuser to access the django admin panel and database with the following command, and then follow the steps to add your admin username and password:
-
-python manage.py createsuperuser
-Assign an admin username,email,and secure password.
-Now you can run the program locally with the following command:
-
-python manage.py runserver
-Note - If you are having issues viewing static files you may need to collect static with the below command.
-
-python3 manage.py collectstatic
-
-### Heroku Deployment
-To deploy FitnessPro  to heroku, take the following steps:
-Create a requirements.txt file using the terminal command pip freeze > requirements.txt.
-
-Create a Procfile with the terminal command echo web: python app.py > Procfile.
-
-git add and git commit the new requirements and Procfile and then git push the project to GitHub.
-
-Sign up for a free Heroku account, Create a new app on the Heroku website by clicking the "New" button in your dashboard. Give it a name and set the region to Europe.
-
-From the heroku dashboard of your newly created application, click on "Deploy" > "Deployment method" and select GitHub, and enable Automatic Deployment.
-
-In the Heroku Resources tab, navigate to the Add-Ons section and search for Heroku Postgres. Select the free Hobby level. This will allow you to have a remote database instead of using the local sqlite3 database, and can be found in the Settings tab. You'll need to update your .env file with your new database-url details. Confirm the linking of the heroku app to the correct GitHub repository.
-
-In the heroku dashboard for the application, click on settings tab and then click on the Reveal config vars button to configure environmental variables.
-
-Set the following config vars:
-
-| Key |	Value |
-|-----|-------|
-|SECRET_KEY	|<your_secret_key>|
-|STRIPE_PUBLIC_KEY |	<your_stripe_public_key> |
-|STRIPE_SECRET_KEY |	<your_stripe_secret_key> |
-|STRIPE_WH_SECRET | <your_stripe_wh_secret> |
-| AWS_ACCESS_KEY_ID	| <your_secret_key> |
-| AWS_SECRET_ACCESS_KEY	| <your_secret_key> |
-| DATABASE_URL |	<your_postgres_database url> |
-| EMAIL_HOST_USER	| <your_email_address> |
-| EMAIL_HOST_PASS	| <your_password> |
-| USE_AWS | <True> |
-
-In the Heroku dashboard, click "Deploy"
-
-
-In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch".
-
-The site is now successfully deployed.
 
 
 ## Credits
