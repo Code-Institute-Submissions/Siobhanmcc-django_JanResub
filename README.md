@@ -37,6 +37,8 @@ The deployed site can be found [here](https://ms-4.herokuapp.com/)
 - [Setting Up S3](#setting-up-s3)
 - [Setting Up IAM](#setting-up-iam)
 - [Connect Django to S3](#connect-django-to-s3)
+- [Adding and Committing Files](#adding-and-committing-files)
+- [Cloning](#cloning)
 
 7. [Credits](#credits)
 
@@ -366,10 +368,47 @@ class MediaStorage(S3Boto3Storage):
     MEDIAFILES_LOCATION = 'media'
 
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
-    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-~~~
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/' ~~~
+
 9. Add, commit and push all via the terminal.
 
+### Adding and committing files
+I’ve been using Gitpod to write my code and using the terminal to add, commit and push code from my workspace to GitHub where it is stored remotely as shown in the course content.
+
+1. Typing git add into the terminal will move files to the staging area. You should normally do this once a couple of minor additions or changes have been made or one large change or addition has been made. git add . will add all files that have been modified, the full stop here means all. If I want to be more selective I can type in the file name e.g. index.html or the files pathway e.g. assets/css/style.css instead of the full stop e.g. git add index.html.
+2. To send these changes to the local repository we use git commit. Normally you'll want to include a brief description of these changes so instead use git commit –m “ ”. Between the “ ” write a clear, concise message detailing what this commit has done.
+3. To view the changes on Heroku or when you want to send your work to the remote repository (GitHub in this instance) then use the git push command. This pushes all the previous commits made to the remote repository. While deploying to Heroku we set it so it'll automatically pick up any changes pushed to our GitHub repository and once Heroku has finished building (this takes a couple of mins) it'll display the most up to date version of the site.
+
+### Cloning
+You can clone a repository so that it can be worked on locally in an IDE such as VSCode by following these steps:
+
+1. Log in to GitHub and navigate to the repository you wish to clone.
+2. Click the button that reads code. This button is situated to the left of the green Gitpod button near the top of the page.
+3. To clone the repository using HTTPS, copy the link shown whilst HTTPS is selected. The link will look something like this: https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+4. Open your local IDE and in the terminal navigate to the working directory of where you wish to insert the cloned directory.
+5. Type git clone followed by the link you copied in step 3 into the terminal, this will look something like this: git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+6. Press enter and the clone will be created in your selected / current working directory (cwd).
+7. A new env.py file will have to be created to include all the environment variables used throughout and should look like below.
+- Both STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY can be found on the Developers dashboard once logged into Stripe.
+- The STRIPE_WH_SECRET can be found once a new endpoint has been created in Developers > Webooks.
+ a. Click on the 'Add endpoint' button.
+ b. Enter the URL of your localhost followed by /checkout/wh/ as your endpoint URL.
+ c. Select all events to listen to and click on the 'Add endpoint' button.
+ d. The value for STRIPE_WH_SECRET can now be found by clicking the 'reveal' link under the signing secret tab on the webhook's dashboard.
+- Add env.py to the .gitignore file so it doesn’t get published in version control.
+~~~
+import os
+
+os.environ.setdefault(“SECRET_KEY”,  “<secret key>”)
+os.environ.setdefault(“DEVELOPMENT”, “True”)
+os.environ.setdefault(“STRIPE_PUBLIC_KEY”, “<key from stripe developers dashboard>”)
+os.environ.setdefault(“STRIPE_SECRET_KEY”, “<key from stripe developers dashboard>”)
+os.environ.setdefault(“STRIPE_WH_SECRET”, “<key from individual webhook>”)~~~
+
+8. You will need to reinstall all the dependencies used, you can do this by running the following pip3 install -r requirements.txt in the terminal.
+9. You will then need to migrate the database by typing python3 manage.py migrate in the terminal.
+10. A new superuser will now need to be created, this can be done by typing python3 manage.py createsuperuser in the terminal and following the instructions shown.
+11. The site is now cloned… Use the command python3 manage.py runserver to run it.
 
 ## Credits
 
