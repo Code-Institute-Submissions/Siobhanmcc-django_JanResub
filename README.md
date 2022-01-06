@@ -10,7 +10,7 @@ The deployed site can be found [here](https://ms-4.herokuapp.com/)
 
 1. UX
 
-- User Stories
+- [User Stories](#user-stories)
 - Design
 - Framework
 - Color Scheme
