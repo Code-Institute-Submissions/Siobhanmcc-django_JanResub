@@ -338,7 +338,8 @@ I then enabled Automatic Deploys.
 6. Delete the DISABLE_COLLECTSTATIC variable.
 7. Create a file called custom_storages.py and populate it like so:
 
-```from django.conf import settings
+~~~
+from django.conf import settings
 from storages.backends.s3boto3 import S3Boto3Storage
 
 
@@ -347,11 +348,12 @@ class StaticStorage(S3Boto3Storage):
 
 
 class MediaStorage(S3Boto3Storage):
-    location = settings.MEDIAFILES_LOCATION```
+    location = settings.MEDIAFILES_LOCATION
+    ~~~
 
 8. Add the following to settings.py.
-
-```if 'USE_AWS' in os.environ:
+~~~
+   if 'USE_AWS' in os.environ:
     AWS_STORAGE_BUCKET_NAME = '<aws_bucket_name>'
     AWS_S3_REGION_NAME = '<aws_region>'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
@@ -364,8 +366,8 @@ class MediaStorage(S3Boto3Storage):
     MEDIAFILES_LOCATION = 'media'
 
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
-    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'```
-
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+~~~
 9. Add, commit and push all via the terminal.
 
 
