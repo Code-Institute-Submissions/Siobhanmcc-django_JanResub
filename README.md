@@ -225,12 +225,12 @@ This project is hosted by Heroku but is still deployed from the master branch of
 8. In settings.py I imported dj_database_url at the top of the file.
 9. Then replaced the default DATABASE setting with:
 
-~~~
+
     DATABASES = {
             'default': dj_database_url.parse(<DATABASE_URL>)
         } 
   
-~~~  
+
 The <DATABASE_URL> is found in the Heroku apps Config Vars. It's important that you don't commit this url into version control!
 
 10. I ran migrations using python3 manage.py migrate to create the models in the new database.
@@ -261,7 +261,7 @@ I then enabled Automatic Deploys.
 - EMAIL_HOST_USER
 - EMAIL_HOST_PASS
 21. I changed the default DATABASE setting we created in step 9 in settings.py so that it now retrieves the value from Heroku:
-```
+
 DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
@@ -279,7 +279,7 @@ DATABASES = {
 - Select "use this bucket to host a website".
 - Give it the default values of index.html and error.html then save.
 5. For the buckets permissions CORS configuration use:
-`[
+[
   {
       "AllowedHeaders": [
           "Authorization"
@@ -292,7 +292,7 @@ DATABASES = {
       ],
       "ExposeHeaders": []
   }
-]`
+]
 6. For the buckets permissions policy:
 - Copy the Amazon resource name (ARN) from the top of the page.
 - Click "policy generator".
@@ -346,7 +346,7 @@ DATABASES = {
 6. Delete the DISABLE_COLLECTSTATIC variable.
 7. Create a file called custom_storages.py and populate it like so:
 
-~~~
+
 from django.conf import settings
 from storages.backends.s3boto3 import S3Boto3Storage
 
@@ -360,7 +360,7 @@ class MediaStorage(S3Boto3Storage):
 
 
 8. Add the following to settings.py.
-~~~
+
    if 'USE_AWS' in os.environ:
     AWS_STORAGE_BUCKET_NAME = '<aws_bucket_name>'
     AWS_S3_REGION_NAME = '<aws_region>'
