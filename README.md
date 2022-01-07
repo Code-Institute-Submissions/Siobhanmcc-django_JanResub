@@ -396,14 +396,14 @@ You can clone a repository so that it can be worked on locally in an IDE such as
  c. Select all events to listen to and click on the 'Add endpoint' button.
  d. The value for STRIPE_WH_SECRET can now be found by clicking the 'reveal' link under the signing secret tab on the webhook's dashboard.
 - Add env.py to the .gitignore file so it doesn’t get published in version control.
-~~~
+```
 import os
 
 os.environ.setdefault(“SECRET_KEY”,  “<secret key>”)
 os.environ.setdefault(“DEVELOPMENT”, “True”)
 os.environ.setdefault(“STRIPE_PUBLIC_KEY”, “<key from stripe developers dashboard>”)
 os.environ.setdefault(“STRIPE_SECRET_KEY”, “<key from stripe developers dashboard>”)
-os.environ.setdefault(“STRIPE_WH_SECRET”, “<key from individual webhook>”)~~~
+os.environ.setdefault(“STRIPE_WH_SECRET”, “<key from individual webhook>”)```
 
 8. You will need to reinstall all the dependencies used, you can do this by running the following pip3 install -r requirements.txt in the terminal.
 9. You will then need to migrate the database by typing python3 manage.py migrate in the terminal.
