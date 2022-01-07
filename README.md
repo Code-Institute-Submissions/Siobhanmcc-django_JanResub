@@ -225,10 +225,10 @@ This project is hosted by Heroku but is still deployed from the master branch of
 8. In settings.py I imported dj_database_url at the top of the file.
 9. Then replaced the default DATABASE setting with:
 
-<\br>
+~~~
     DATABASES = {
             'default': dj_database_url.parse(<DATABASE_URL>)
-        }
+        } ~~~
   
 The <DATABASE_URL> is found in the Heroku apps Config Vars. It's important that you don't commit this url into version control!
 
@@ -264,7 +264,7 @@ I then enabled Automatic Deploys.
 DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-    ```
+    
 22. Added, committed and pushed all files via the terminal.
 23. Heroku is now set up and the app visible. It will automatically update whenever commits are pushed to Github via the IDE.
 
