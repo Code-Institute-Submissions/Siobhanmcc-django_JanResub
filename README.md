@@ -224,9 +224,12 @@ This project is hosted by Heroku but is still deployed from the master branch of
 7. Installed dj_database_url and psycopg2-binary using pip3 install.
 8. In settings.py I imported dj_database_url at the top of the file.
 9. Then replaced the default DATABASE setting with:
-`DATABASES = {
-        'default': dj_database_url.parse(<DATABASE_URL>)
-    }`
+
+<\br>
+    DATABASES = {
+            'default': dj_database_url.parse(<DATABASE_URL>)
+        }
+  
 The <DATABASE_URL> is found in the Heroku apps Config Vars. It's important that you don't commit this url into version control!
 
 10. I ran migrations using python3 manage.py migrate to create the models in the new database.
