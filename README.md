@@ -257,9 +257,11 @@ I then enabled Automatic Deploys.
 - EMAIL_HOST_USER
 - EMAIL_HOST_PASS
 21. I changed the default DATABASE setting we created in step 9 in settings.py so that it now retrieves the value from Heroku:
-`DATABASES = {
+```
+DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }`
+    }
+    ```
 22. Added, committed and pushed all files via the terminal.
 23. Heroku is now set up and the app visible. It will automatically update whenever commits are pushed to Github via the IDE.
 
