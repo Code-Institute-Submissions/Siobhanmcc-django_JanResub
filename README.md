@@ -212,73 +212,76 @@ Desktop - Firefox v.67
 ## Deployment
 ### Heroku deployment
 This project is hosted by Heroku but is still deployed from the master branch of a GitHub repository. The following steps were taken to deploy this project to Heroku:
+1. Went to [Heroku](https://heroku.com/) and logged in.
+2. Created a new app by clicking **create new app** from the drop down menu labelled "new".
+3. Gave my app a name and selected the region from the dropdown menu that was closest geographically. 
+4. Clicked the **create app** button where I was directed to the dashboard for the new app.
+5. Clicked on the **resources** tab on the dashboard. Added Heroku Postgres to the app by searching and then selecting it. I then selected the Hobby Dev – Free plan.
+6. As I didn't use fixtures to populate my development database I now created two json files, which act as fixtures and will help transfer the data across to the Postgres database.
+    * `python3 manage.py dumpdata products.Category > categories.json`
+    * `python3 manage.py dumpdata products.Product > products.json`
+7. Installed dj_database_url and psycopg2-binary using `pip3 install`.
+8. In `settings.py` I imported dj_database_url at the top of the file.
+9. Then replaced the default `DATABASE` setting with:
+```
+DATABASES = {
+        'default': dj_database_url.parse(<DATABASE_URL>)
+    }
+```
+The `<DATABASE_URL>` is found in the Heroku apps **Config Vars**. It's important that you don't commit this url into version control!
 
-1. Went to Heroku and logged in.
-2. Created a new app by clicking create new app from the drop down menu labelled "new".
-3. Gave my app a name and selected the region from the dropdown menu that was closest geographically.
-4. Clicked the create app button where I was directed to the dashboard for the new app.
-5. Clicked on the resources tab on the dashboard. Added Heroku Postgres to the app by searching and then selecting it. I then selected the Hobby Dev – Free plan.
-6. As I didn't use fixtures to populate my development database I now created three json files, which act as fixtures and will help transfer the data across to the Postgres database.
-- python3 manage.py dumpdata products.Category > categories.json
-- python3 manage.py dumpdata products.Product > products.json
-7. Installed dj_database_url and psycopg2-binary using pip3 install.
-8. In settings.py I imported dj_database_url at the top of the file.
-9. Then replaced the default DATABASE setting with:
-
-
-    DATABASES = {
-            'default': dj_database_url.parse(<DATABASE_URL>)
-        } 
-  
-
-The <DATABASE_URL> is found in the Heroku apps Config Vars. It's important that you don't commit this url into version control!
-
-10. I ran migrations using python3 manage.py migrate to create the models in the new database.
+10. I ran migrations using `python3 manage.py migrate` to create the models in the new database.
 11. I now used the json files created in step 6 to populate the new database. 
-- python3 manage.py loaddata categories.json
-- python3 manage.py loaddata products.json
-11. Then I created a new superuser, this was done by using python3 manage.py createsuperuser and then following the instructions shown in the terminal.
-12. Installed gunicorn using pip3 install.
-13. Used pip3 freeze > requirements.txt, this stores all our apps requirements.
-14. Created a Procfile and populated it with:
-`web: gunicorn <app_name>.wsgi:application`
-15. I logged into Heroku but this time via the terminal using heroku login -i.
-16. Then I used heroku config:set COLLECTSTATIC=1 --app <app_name> to disable static files from being collected. This is only a temporary measure.
-17. Added the hostname of the Heroku app to ALLOWED_HOSTS in settings.py
-`ALLOWED_HOSTS = ['<hostname>', 'localhost']`
-18. Returned to the Heroku dashboard, clicked on the deploy tab, scrolled down to the “Deployment method” section and clicked the connect to GitHub button.
-19. I searched for my repository in the “Connect to GitHub” section, found it and clicked connect.
-I then enabled Automatic Deploys.
-20. At the top of the dashboard I selected the settings tab. Scrolled down to the Config Vars section and populated the section with the key value pairs of the following:
-- AWS_ACCESS_KEY_ID - I get this when I set up AWS.
-- AWS_SECRET_ACCESS_KEY - I get this when I set up AWS.
-- DATABASE_URL - Prepopulated.
-- SECRET_KEY
-- STRIPE_PUBLIC_KEY
-- STRIPE_SECRET_KEY
-- STRIPE_WH_SECRET
-- USE_AWS - True
-- EMAIL_HOST_USER
-- EMAIL_HOST_PASS
-21. I changed the default DATABASE setting we created in step 9 in settings.py so that it now retrieves the value from Heroku:
-
+    * `python3 manage.py loaddata categories.json`
+    * `python3 manage.py loaddata products.json`
+12. Then I created a new superuser, this was done by using `python3 manage.py createsuperuser` and then following the instructions shown in the terminal.
+13. Installed gunicorn using `pip3 install`.
+14. Used `pip3 freeze > requirements.txt`, this stores all our apps requirements.
+15. Created a Procfile and populated it with:
+```
+web: gunicorn <app_name>.wsgi:application
+```
+16. I logged into Heroku but this time via the terminal using `heroku login -i`.
+17. Then I used `heroku config:set COLLECTSTATIC=1 --app <app_name>` to disable static files from being collected. This is only a temporary measure.
+18. Added the hostname of the Heroku app to `ALLOWED_HOSTS` in `settings.py`
+```
+ALLOWED_HOSTS = ['<hostname>', 'localhost']
+```
+19. Returned to the Heroku dashboard, clicked on the **deploy** tab, scrolled down to the “Deployment method” section and clicked the **connect to GitHub** button. 
+20. I searched for my repository in the “Connect to GitHub” section, found it and clicked **connect**.
+21. I then enabled **Automatic Deploys**.
+22. At the top of the dashboard I selected the **settings** tab. Scrolled down to the **Config Vars** section and populated the section with the key value pairs of the following:
+    * AWS_ACCESS_KEY_ID - I get this when I set up AWS.
+    * AWS_SECRET_ACCESS_KEY - I get this when I set up AWS.
+    * DATABASE_URL - Prepopulated.
+    * DISABLE_COLLECTSTATIC - Created this during step 17.
+    * SECRET_KEY
+    * STRIPE_PUBLIC_KEY
+    * STRIPE_SECRET_KEY
+    * STRIPE_WH_SECRET
+    * USE_AWS - True
+23. I changed the default `DATABASE` setting we created in step 9 in `settings.py` so that it now retrieves the value from Heroku:
+```
 DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
+```
+24. Added, committed and pushed all files via the terminal.
+25. Heroku is now set up and the app visible. It will automatically update whenever commits are pushed to Github via the IDE.
 
-22. Added, committed and pushed all files via the terminal.
-23. Heroku is now set up and the app visible. It will automatically update whenever commits are pushed to Github via the IDE.
+<details>
+<summary>Setting up S3</summary>
 
-### Setting Up S3
-1. Create an AWS account.
+1. Create an [AWS](https://aws.amazon.com/) account.
 2. Navigate to the management console, search for "S3" to be taken to the S3 dashboard.
-3. Click create bucket button.
- - Give it a name and select the region closest to you.
- - Allow public access.
-4. In the bucket's properties select static website hosting.
-- Select "use this bucket to host a website".
-- Give it the default values of index.html and error.html then save.
+3. Click **create bucket** button.
+    * Give it a name and select the region closest to you.
+    * Allow public access.
+4. In the bucket's properties select **static website hosting**.
+    * Select "use this bucket to host a website".
+    * Give it the default values of `index.html` and `error.html` then save.
 5. For the buckets permissions CORS configuration use:
+```
 [
   {
       "AllowedHeaders": [
@@ -293,60 +296,66 @@ DATABASES = {
       "ExposeHeaders": []
   }
 ]
+```
 6. For the buckets permissions policy:
-- Copy the Amazon resource name (ARN) from the top of the page.
-- Click "policy generator".
-- Select type of policy as "S3 Bucket Policy".
-- Allow all principals by using *.
-- Set action to "GetObject".
-- Paste in the ARN.
-- Click Add statement. Then Generate policy and copy the json file shown.
-- Paste this json file to bucket policy.
-- Add /* at the end of the 'Resource' key.
-- Save.
+    * Copy the Amazon resource name (ARN) from the top of the page.
+    * Click "policy generator".
+    * Select type of policy as "S3 Bucket Policy".
+    * Allow all principals by using `*`.
+    * Set action to "GetObject".
+    * Paste in the ARN.
+    * Click **Add statement**. Then **Generate policy** and copy the json file shown.
+    * Paste this json file to bucket policy.
+        * Add `/*` at the end of the 'Resource' key.
+    * Save.
 7. For the access control list:
-- Set list objects to everyone.
+    * Set list objects to everyone.
+</details>
 
-### Setting up IAM (Identity and Access Management)
+<details>
+<summary>Setting up IAM (Identity and Access Management)</summary>
+
 1. From the AWS management console, search for "IAM" to be taken to the IAM dashboard.
 2. Creating a group:
-- Select "Groups" from the menu.
-- Click the Create new group button.
-- Name the group.
+    * Select "Groups" from the menu.
+    * Click the **Create new group** button.
+    * Name the group.
 3. Creating a policy:
-- Select "Policies" from the menu.
-- Click the Create policy button.
-- Select the JSON tab and click the "import managed policy" link.
-- Find and import Amazon S3 Full Access.
-- In the 'Resource' key of the json code shown paste in the ARN from the bucket policy twice forming a list.
-- Add /* to the end of one.
-- Review the policy and give it a name and a description.
-- Create policy.
+    * Select "Policies" from the menu.
+    * Click the **Create policy** button.
+    * Select the **JSON** tab and click the "import managed policy" link.
+        * Find and import **Amazon S3 Full Access**.
+    * In the 'Resource' key of the json code shown paste in the ARN from the bucket policy twice forming a list.
+        * Add `/*` to the end of one.
+    * Review the policy and give it a name and a description.
+    * **Create policy**.
 4. Attaching the policy to the group:
-- Select "Groups" from the menu and select the group created in step 2.
-- Click the Attach policy button.
-- Select the policy created in step 3.
-- Attach policy.
+    * Select "Groups" from the menu and select the group created in step 2.
+    * Click the **Attach policy** button.
+    * Select the policy created in step 3.
+    * **Attach policy**.
 5. Creating a user:
-- Select "Users" from the menu.
-- Click the Add user button.
-- Create a user by giving them a name.
-- Grant the programatic access and click Next.
-- Select the group shown that has the policy attached.
-- Create user.
+    * Select "Users" from the menu.
+    * Click the **Add user** button.
+    * Create a user by giving them a name.
+    * Grant the programatic access and click **Next**.
+    * Select the group shown that has the policy attached.
+    * **Create user**.
 6. Download the .csv file.
+</details>
 
-### Connect Django to S3
-1. Install boto3 by using pip3 install boto3.
-2. Install django-storages by using pip3 install django-storages.
-3. Run pip3 freeze > requirements.txt.
-4. Add 'storages' to the apps list in settings.py.
-5. Add the values of AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to Config Vars in Heroku.
-- These values are in the downloaded .csv file.
+<details>
+<summary>Connect Django to S3</summary>
+
+1. Install boto3 by using `pip3 install boto3`.
+2. Install django-storages by using `pip3 install django-storages`.
+3. Run `pip3 freeze > requirements.txt`.
+4. Add 'storages' to the apps list in `settings.py`.
+5. Add the values of AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to **Config Vars** in Heroku.
+    * These values are in the downloaded .csv file.
 6. Delete the DISABLE_COLLECTSTATIC variable.
-7. Create a file called custom_storages.py and populate it like so:
-
-
+7. Create a file called `custom_storages.py` and populate it like so:
+```
 from django.conf import settings
 from storages.backends.s3boto3 import S3Boto3Storage
 
@@ -357,11 +366,10 @@ class StaticStorage(S3Boto3Storage):
 
 class MediaStorage(S3Boto3Storage):
     location = settings.MEDIAFILES_LOCATION
-
-
-8. Add the following to settings.py.
-
-   if 'USE_AWS' in os.environ:
+```
+8. Add the following to `settings.py`.
+```
+if 'USE_AWS' in os.environ:
     AWS_STORAGE_BUCKET_NAME = '<aws_bucket_name>'
     AWS_S3_REGION_NAME = '<aws_region>'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
@@ -374,47 +382,49 @@ class MediaStorage(S3Boto3Storage):
     MEDIAFILES_LOCATION = 'media'
 
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
-    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/' ~~~
-
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+```
 9. Add, commit and push all via the terminal.
+</details>
 
-### Adding and committing files
+<details>
+<summary>Adding and committing files</summary>
+
 I’ve been using Gitpod to write my code and using the terminal to add, commit and push code from my workspace to GitHub where it is stored remotely as shown in the course content.
-
-1. Typing git add into the terminal will move files to the staging area. You should normally do this once a couple of minor additions or changes have been made or one large change or addition has been made. git add . will add all files that have been modified, the full stop here means all. If I want to be more selective I can type in the file name e.g. index.html or the files pathway e.g. assets/css/style.css instead of the full stop e.g. git add index.html.
-2. To send these changes to the local repository we use git commit. Normally you'll want to include a brief description of these changes so instead use git commit –m “ ”. Between the “ ” write a clear, concise message detailing what this commit has done.
-3. To view the changes on Heroku or when you want to send your work to the remote repository (GitHub in this instance) then use the git push command. This pushes all the previous commits made to the remote repository. While deploying to Heroku we set it so it'll automatically pick up any changes pushed to our GitHub repository and once Heroku has finished building (this takes a couple of mins) it'll display the most up to date version of the site.
+1. Typing `git add` into the terminal will move files to the staging area. You should normally do this once a couple of minor additions or changes have been made or one large change or addition has been made. `git add .` will add all files that have been modified, the full stop here means all. If I want to be more selective I can type in the file name e.g. index.html or the files pathway e.g. assets/css/style.css instead of the full stop e.g. `git add index.html`.
+2. To send these changes to the local repository we use `git commit`. Normally you'll want to include a brief description of these changes so instead use `git commit –m “ ”`. Between the “ ” write a clear, concise message detailing what this commit has done.
+3. To view the changes on Heroku or when you want to send your work to the remote repository (GitHub in this instance) then use the `git push` command. This pushes all the previous commits made to the remote repository. While deploying to Heroku we set it so it'll automatically pick up any changes pushed to our GitHub repository and once Heroku has finished building (this takes a couple of mins) it'll display the most up to date version of the site.
+</details>
 
 ### Cloning
 You can clone a repository so that it can be worked on locally in an IDE such as VSCode by following these steps:
-
 1. Log in to GitHub and navigate to the repository you wish to clone.
-2. Click the button that reads code. This button is situated to the left of the green Gitpod button near the top of the page.
-3. To clone the repository using HTTPS, copy the link shown whilst HTTPS is selected. The link will look something like this: https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+2. Click the button that reads **code**. This button is situated to the left of the green Gitpod button near the top of the page.
+3. To clone the repository using HTTPS, copy the link shown whilst HTTPS is selected. The link will look something like this: `https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`
 4. Open your local IDE and in the terminal navigate to the working directory of where you wish to insert the cloned directory.
-5. Type git clone followed by the link you copied in step 3 into the terminal, this will look something like this: git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
-6. Press enter and the clone will be created in your selected / current working directory (cwd).
-7. A new env.py file will have to be created to include all the environment variables used throughout and should look like below.
-- Both STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY can be found on the Developers dashboard once logged into Stripe.
-- The STRIPE_WH_SECRET can be found once a new endpoint has been created in Developers > Webooks.
- a. Click on the 'Add endpoint' button.
- b. Enter the URL of your localhost followed by /checkout/wh/ as your endpoint URL.
- c. Select all events to listen to and click on the 'Add endpoint' button.
- d. The value for STRIPE_WH_SECRET can now be found by clicking the 'reveal' link under the signing secret tab on the webhook's dashboard.
-- Add env.py to the .gitignore file so it doesn’t get published in version control.
+5. Type `git clone` followed by the link you copied in step 3 into the terminal, this will look something like this: `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`
+6. Press **enter** and the clone will be created in your selected / current working directory (cwd).
+7. A new `env.py` file will have to be created to include all the environment variables used throughout and should look like below.
+    * Both STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY can be found on the **Developers** dashboard once logged into Stripe.
+    * The STRIPE_WH_SECRET can be found once a new endpoint has been created in **Developers** > **Webooks**.
+        1. Click on the 'Add endpoint' button.
+        2. Enter the URL of your localhost followed by `/checkout/wh/` as your endpoint URL.
+        3. Select all events to listen to and click on the 'Add endpoint' button.
+        4. The value for STRIPE_WH_SECRET can now be found by clicking the 'reveal' link under the signing secret tab on the webhook's dashboard.
+    * Add `env.py` to the .gitignore file so it doesn’t get published in version control.
+```
+import os
 
-    import os
-
-    os.environ.setdefault(“SECRET_KEY”,  “<secret key>”)
-    os.environ.setdefault(“DEVELOPMENT”, “True”)
-    os.environ.setdefault(“STRIPE_PUBLIC_KEY”, “<key from stripe developers dashboard>”)
-    os.environ.setdefault(“STRIPE_SECRET_KEY”, “<key from stripe developers dashboard>”)
-    os.environ.setdefault(“STRIPE_WH_SECRET”, “<key from individual webhook>”)
-
-8. You will need to reinstall all the dependencies used, you can do this by running the following pip3 install -r requirements.txt in the terminal.
-9. You will then need to migrate the database by typing python3 manage.py migrate in the terminal.
-10. A new superuser will now need to be created, this can be done by typing python3 manage.py createsuperuser in the terminal and following the instructions shown.
-11. The site is now cloned… Use the command python3 manage.py runserver to run it.
+os.environ.setdefault(“SECRET_KEY”,  “<secret key>”)
+os.environ.setdefault(“DEVELOPMENT”, “True”)
+os.environ.setdefault(“STRIPE_PUBLIC_KEY”, “<key from stripe developers dashboard>”)
+os.environ.setdefault(“STRIPE_SECRET_KEY”, “<key from stripe developers dashboard>”)
+os.environ.setdefault(“STRIPE_WH_SECRET”, “<key from individual webhook>”)
+```
+8. You will need to reinstall all the dependencies used, you can do this by running the following `pip3 install -r requirements.txt` in the terminal.
+9. You will then need to migrate the database by typing `python3 manage.py migrate` in the terminal.
+10.	A new superuser will now need to be created, this can be done by typing `python3 manage.py createsuperuser` in the terminal and following the instructions shown.
+11. The site is now cloned… Use the command `python3 manage.py runserver` to run it.
 
 ## Credits
 
