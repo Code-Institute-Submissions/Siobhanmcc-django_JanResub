@@ -24,13 +24,13 @@
         <form method="POST" action="{% url 'add_blog_post' %}" enctype="multipart/form-data">
             {% csrf_token %}    
             <div class="row blog-form">
-                <div class="col-12 col-sm-10 offset-sm-1 col-md-5 offset-md-1 col-lg-4 offset-lg-2">
+                <div class="col-12 col-sm-10 col-md-5 col-lg-4">
                     {{ form.title | as_crispy_field }}
                 </div>
-                <div class="col-12 col-sm-10 offset-sm-1 col-md-5 offset-md-0 col-lg-4">
+                <div class="col-12 col-sm-10 col-md-5 col-lg-4 edit-image">
                     {{ form.image | as_crispy_field }}
                 </div>
-                <div class="col-12 col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                <div class="col-12 col-sm-10 col-md-10 col-lg-8 ">
                     {{ form.content | as_crispy_field }}
                 </div>
                 <div class="col-12 col-sm-10 offset-sm-1 col-md-5 offset-md-1 col-lg-4 offset-lg-2 mb-3">

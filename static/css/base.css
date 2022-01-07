@@ -1,6 +1,6 @@
-.row {
+/*.row {
     justify-content: space-evenly;
-}
+}*/
 .card-title {
     margin-bottom: .75rem;
     white-space: nowrap;
@@ -430,6 +430,24 @@ height:200px;
 .blog-post-content {
     margin-top: 0;
     margin-bottom: 1rem;
+    /*justify-content: space-between*/
+}
+
+.blog-form-input {
+    height: 40px;
+    padding: 5px 10px;
+    margin-left:100px;
+}
+
+.blog-form {
+    gap:15px;
+    margin-left:30px;
+    justify-content: space-between;
+}
+
+
+.edit-image {
+    padding-left:0px;
 }
 
 /*Contact*/
