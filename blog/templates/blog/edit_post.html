@@ -20,6 +20,8 @@
                 <h1 class="page-title">Edit Blog Post</h1>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
         <form method="POST" action="{% url 'edit_blog_post' blog_post.slug %}" enctype="multipart/form-data" id="theform">
             {% csrf_token %}    
             <div class="row blog-form">
@@ -42,5 +44,7 @@
                 </div>
             </div>
         </form>  
+    </div>
+    </div>
     </div>
 {% endblock %}

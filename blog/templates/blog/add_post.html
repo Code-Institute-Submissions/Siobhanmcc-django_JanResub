@@ -21,8 +21,10 @@
                 <h1 class="page-title">New Blog Post</h1>
             </div>
         </div>
+        <div class="row">
+        <div class="col-12">
         <form method="POST" action="{% url 'add_blog_post' %}" enctype="multipart/form-data" id="theform">
-            {% csrf_token %}    
+            {% csrf_token %} 
             <div class="row blog-form">
                 <div class="col-12 col-sm-10 col-md-5 col-lg-4">
                     {{ form.title | as_crispy_field }}
@@ -44,4 +46,6 @@
             </div>
         </form>  
     </div>
+</div>
+</div>
 {% endblock %}
