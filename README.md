@@ -52,7 +52,6 @@ This project is the final part of my Code Institute Full Stack Software Developm
 - As a user I want to view my profile.
 - As a user I want to update my profile.
 - As a user I want to login and logout.
-- As a user I want to be able to change my password.
 - As a user I want to filter the products based on category type.
 - As a user I want to search for a product.
 - As a user I want to be able to see the product details.
@@ -122,6 +121,32 @@ The user needs to fill out the payment form in order to go for the payment.
 Once the payment is successfull, a message will be displayed.
 
 If there is an error with the payment, the user will be notified with an error message.
+
+### Blog App
+### blog.html
+
+This page will show the user existing blog posts that have been published to the database. Clicking on the 'Read More' option will bring the user to a full version of the blog post. 
+
+### blog_detail.html
+
+The user can read a full version of a blog post here. An admin user will be given the option to edit or delete posts from this page. 
+
+### add_post.html
+
+An admin user can add a blog post by clicking on the 'Add Blog post' option in the 'My Account' dropdown. Here the user can add a title, image and content to include in the post. 
+
+### edit_post.html
+
+An admin user can edit the title, image or content of a post by clicking on the 'Edit Post' option from the blog detail page.
+
+### Contact App
+### contact.html
+
+This page will allow a user to contact the site owner via a contact form. These forms will then be saved to the database.
+
+### contact_thankyou.html
+
+This page will render a thank you message once the contact form has been submitted successfully.
 
 ### Search App
 This will allow the user to search for a product based on the title.
