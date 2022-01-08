@@ -1,6 +1,6 @@
-/*.row {
+.row {
     justify-content: space-evenly;
-}*/
+}
 .card-title {
     margin-bottom: .75rem;
     white-space: nowrap;
