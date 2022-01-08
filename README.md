@@ -464,4 +464,4 @@ These sites also provided inspiration and insight for the code for my blog and c
 ## Acknowledgement
 The tutors, mentors and support staff at Code Institute
 
-Special thanks to Guido Cecilio Garcia, my Code Institute mentor, for his guidance and advice whilst working on this project.
+Special thanks to Guido Cecilio Garcia & Brian Macharia my Code Institute mentors, for their guidance and advice whilst working on this project.
