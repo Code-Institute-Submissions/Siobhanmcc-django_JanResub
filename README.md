@@ -456,7 +456,17 @@ os.environ.setdefault(“STRIPE_WH_SECRET”, “<key from individual webhook>�
 
 The Project- Boutique Ado module in the Code Institute Full Stack Diploma in Software Development Program formed the basis for this project. 
 
-This site [Tick Tock watches](https://ticktockwatches.herokuapp.com/) also provided me with some ideas.
+This site [Tick Tock watches](https://ticktockwatches.herokuapp.com/) provided me with some design ideas.
+
+This article was helpful in setting up my blog https://djangocentral.com/building-a-blog-application-with-django/
+
+These sites also provided inspiration and insight for the code for my blog and contact apps. [Hop Shop](https://hop-shop.herokuapp.com/) and [Art of Tea](https://art-of-tea.herokuapp.com/)
+
+[This article from CNN](https://edition.cnn.com/2017/12/25/health/fruits-vegetables-food-resolution-drayer/index.html) and [this article](https://www.runnersworld.com/training/g20840944/new-years-resolutions-running/) formed content for two of my blog posts.
+
+
+
+
 
 ## Acknowledgement
 The tutors, mentors and support staff at Code Institute
