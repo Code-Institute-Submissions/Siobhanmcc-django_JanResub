@@ -21,8 +21,8 @@
                 <h1 class="page-title">New Blog Post</h1>
             </div>
         </div>
-        <div class="row">
-        <div class="col-12">
+        <div class="row mt-4">
+        <div class="col-12 col-lg-6 mb-5 p-4 ">
         <form method="POST" action="{% url 'add_blog_post' %}" enctype="multipart/form-data" id="theform">
             {% csrf_token %} 
             <div class="row blog-form">
