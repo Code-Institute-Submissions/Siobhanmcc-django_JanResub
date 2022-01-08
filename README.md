@@ -29,9 +29,7 @@ The deployed site can be found [here](https://ms-4.herokuapp.com/)
 
 4. [Testing](#testing)
 
-5. [Github Repository](#github-repository)
-
-6. [Deployment](#deployment)
+5. [Deployment](#deployment)
 
 - [Heroku Deployment](#heroku-deployment)
 - [Setting Up S3](#setting-up-s3)
@@ -91,6 +89,7 @@ I've used Balsamiq Wireframes during the Scope Plane part of the design and plan
 All of my wireframes for this project can be found [here](https://github.com/Siobhanmcc/django/tree/master/documents/wireframes)
 
 ## Features
+### Existing Features
 ### Accounts App
 The accounts app will allow users to register for free and create their own unique account. This is built using Django's authentication and authorization to validate profile data. Passwords are hashed for security purposes.
 
@@ -293,8 +292,8 @@ DATABASES = {
 24. Added, committed and pushed all files via the terminal.
 25. Heroku is now set up and the app visible. It will automatically update whenever commits are pushed to Github via the IDE.
 
-<details>
-<summary>Setting up S3</summary>
+
+### Setting up S3
 
 1. Create an [AWS](https://aws.amazon.com/) account.
 2. Navigate to the management console, search for "S3" to be taken to the S3 dashboard.
@@ -334,10 +333,8 @@ DATABASES = {
     * Save.
 7. For the access control list:
     * Set list objects to everyone.
-</details>
 
-<details>
-<summary>Setting up IAM (Identity and Access Management)</summary>
+### Setting up IAM (Identity and Access Management)
 
 1. From the AWS management console, search for "IAM" to be taken to the IAM dashboard.
 2. Creating a group:
@@ -366,10 +363,8 @@ DATABASES = {
     * Select the group shown that has the policy attached.
     * **Create user**.
 6. Download the .csv file.
-</details>
 
-<details>
-<summary>Connect Django to S3</summary>
+### Connect Django to S3
 
 1. Install boto3 by using `pip3 install boto3`.
 2. Install django-storages by using `pip3 install django-storages`.
@@ -409,10 +404,8 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 ```
 9. Add, commit and push all via the terminal.
-</details>
 
-<details>
-<summary>Adding and committing files</summary>
+### Adding and committing files
 
 I’ve been using Gitpod to write my code and using the terminal to add, commit and push code from my workspace to GitHub where it is stored remotely as shown in the course content.
 1. Typing `git add` into the terminal will move files to the staging area. You should normally do this once a couple of minor additions or changes have been made or one large change or addition has been made. `git add .` will add all files that have been modified, the full stop here means all. If I want to be more selective I can type in the file name e.g. index.html or the files pathway e.g. assets/css/style.css instead of the full stop e.g. `git add index.html`.
