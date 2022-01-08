@@ -334,7 +334,7 @@ DATABASES = {
 7. For the access control list:
     * Set list objects to everyone.
 
-### Setting up IAM (Identity and Access Management)
+### Setting up IAM
 
 1. From the AWS management console, search for "IAM" to be taken to the IAM dashboard.
 2. Creating a group:
