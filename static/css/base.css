@@ -450,6 +450,13 @@ height:200px;
     padding-left:0px;
 }
 
+@media only screen and (max-width: 575px) {
+    .blog-post-content {
+        text-align: center;
+        font-size: 0.9rem;    
+    }
+}
+
 /*Contact*/
 
 .contact {
