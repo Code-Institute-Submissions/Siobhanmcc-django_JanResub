@@ -455,7 +455,12 @@ height:200px;
         text-align: center;
         font-size: 0.9rem;    
     }
+    #theform {
+        width:50%;
+    }
 }
+
+
 
 /*Contact*/
 
