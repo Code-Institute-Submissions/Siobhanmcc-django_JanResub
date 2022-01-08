@@ -433,24 +433,24 @@ height:200px;
     /*justify-content: space-between*/
 }
 
-.blog-form-input {
+/*.blog-form-input {
     height: 40px;
     padding: 5px 10px;
     margin-left:100px;
 }
 
 .blog-form {
-    gap:15px;
-    margin-left:30px;
+    /* gap:15px;
+    margin-left:30px; */
     justify-content: space-between;
 }
 
-
+/*
 .edit-image {
     padding-left:0px;
 }
 
-@media only screen and (max-width: 575px) {
+@media only screen and (max-width: 800px) {
     .blog-post-content {
         text-align: center;
         font-size: 0.9rem;    
@@ -458,8 +458,14 @@ height:200px;
     #theform {
         width:50%;
         text-align:center;
+        flex-direction: column;
+        align-items: stretch;
     }
-}
+
+    .blog-form{
+        text-align: center;
+    }
+}*/
 
 
 
