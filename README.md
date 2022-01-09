@@ -265,6 +265,8 @@ The `<DATABASE_URL>` is found in the Heroku apps **Config Vars**. It's important
 ```
 web: gunicorn <app_name>.wsgi:application
 ```
+ Note: to deploy a forked version of the project, steps 13-15 are not necessary
+
 16. I logged into Heroku but this time via the terminal using `heroku login -i`.
 17. Then I used `heroku config:set COLLECTSTATIC=1 --app <app_name>` to disable static files from being collected. This is only a temporary measure.
 18. Added the hostname of the Heroku app to `ALLOWED_HOSTS` in `settings.py`
