@@ -278,6 +278,8 @@ ALLOWED_HOSTS = ['<hostname>', 'localhost']
     * AWS_ACCESS_KEY_ID - I get this when I set up AWS.
     * AWS_SECRET_ACCESS_KEY - I get this when I set up AWS.
     * DATABASE_URL - Prepopulated.
+    * EMAIL_HOST_PASS
+    * EMAIL_HOST_USER
     * SECRET_KEY
     * STRIPE_PUBLIC_KEY
     * STRIPE_SECRET_KEY
