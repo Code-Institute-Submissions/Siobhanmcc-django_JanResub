@@ -241,7 +241,7 @@ This project is hosted by Heroku but is still deployed from the master branch of
 3. Gave my app a name and selected the region from the dropdown menu that was closest geographically. 
 4. Clicked the **create app** button where I was directed to the dashboard for the new app.
 5. Clicked on the **resources** tab on the dashboard. Added Heroku Postgres to the app by searching and then selecting it. I then selected the Hobby Dev – Free plan.
-6. As I didn't use fixtures to populate my development database I now created two json files, which act as fixtures and will help transfer the data across to the Postgres database.
+6.I now created two json files, which act as fixtures and will help transfer the data across to the Postgres database.
     * `python3 manage.py dumpdata products.Category > categories.json`
     * `python3 manage.py dumpdata products.Product > products.json`
 7. Installed dj_database_url and psycopg2-binary using `pip3 install`.
